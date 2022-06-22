@@ -7,20 +7,22 @@
 
 
 
-  fetch("http://127.0.0.1:5501/table.json")
-  .then(response => {
-     return response.json();
-  })
-  .then(data => {
-    console.log(data)
-    // console.log(JSON.stringify(data))
-    console.log(data.results);
-    console.log(typeof(data));
-    // console.log(Object.results);
-    // for(i in data){
-    //   i = document.getElementById('booking').value;
-    // }
-  })
+  // fetch("http://127.0.0.1:5501/table.json")
+  // .then(response => {
+  //    return response.json();
+  // })
+  // .then(data => {
+  //   console.log(data)
+  //   // console.log(JSON.stringify(data))
+  //   console.log(data.results);
+  //   console.log(typeof(data));
+  //   const myArray = Object.values(data);
+  //   console.log(myArray);
+  //   // console.log(Object.results);
+  //   // for(i in data){
+  //   //   i = document.getElementById('booking').value;
+  //   // }
+  // })
 
 
   fetch("http://127.0.0.1:5501/table.json")
@@ -37,21 +39,21 @@
 
 .then(function(data){
   let placeholder = document.querySelector("#tb");
-  console.log(placeholder);
+  // console.log(placeholder);
   let out = "";
-  for (let product of Object.keys(data)){
+  for (let product of data.results){
     console.log(product);
     out += `
     
             
                 <tr>
                     <th rowspan="2" style="color: green;">6:30 - 7:30</th>
-                    <td>${product.booking}</td>
+                    <td>${product.accessPointName} - ${product.resources}</td>
                     <td>Trade</td>
-                    <th rowspan="2">1hr 30min</th>
+                    <th rowspan="2">${product.scheduledDuration}</th>
                 </tr>
                 <tr>
-                    <th>Contractor Name</th>
+                    <th>${product.contactName}</th>
                     <th>Destination</th>
                 </tr>
 
