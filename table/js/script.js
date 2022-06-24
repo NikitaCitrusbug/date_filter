@@ -1,25 +1,4 @@
-// fetch('http://127.0.0.1:5501/table.json')
-// .then(response => response.json())
-//   .then(data =>{
-//     console.log(data)
-//   })
 
-// fetch("http://127.0.0.1:5501/table.json")
-// .then(response => {
-//    return response.json();
-// })
-// .then(data => {
-//   console.log(data)
-//   // console.log(JSON.stringify(data))
-//   console.log(data.results);
-//   console.log(typeof(data));
-//   const myArray = Object.values(data);
-//   console.log(myArray);
-//   // console.log(Object.results);
-//   // for(i in data){
-//   //   i = document.getElementById('booking').value;
-//   // }
-// })
 
 fetch("http://127.0.0.1:5501/table.json").then(function (response) {
   return response.json();
@@ -50,42 +29,71 @@ fetch("http://127.0.0.1:5501/table.json").then(function (response) {
 //   // console.log(placeholder);
 // })
 
-fetch("http://127.0.0.1:5501/table.json")
-  .then(function (response) {
-    return response.json();
-  })
 
-  .then(function (datatable) {
-    let placeholder = document.querySelector("#tb");
-    // console.log(placeholder);
-    let out = "";
-    for (let pr of datatable.results) {
-      // console.log(pr);
-      out += `
+
+
+
+
+// fetch("http://127.0.0.1:5501/table.json")
+//   .then(function (response) {
+//     return response.json();
+//   })
+
+//   .then(function (datatable) {
+//     let placeholder = document.querySelector("#tb");
+//     let out = "";
+//     for (let pr of datatable.results) {
+      
+//       out += `
     
                 
-                <tr>
-                    <th rowspan="2" style="color: green;">6:30 - 7:30</th>
-                    <td>${pr.accessPointName} - ${pr.resources}</td>
-                    <td>Trade</td>
-                    <th rowspan="2">${pr.scheduledDuration}</th>
-                </tr>
-                <tr>
-                    <th>${pr.contactName}</th>
-                    <th>Destination</th>
-                </tr>
+//                 <tr>
+//                     <th rowspan="2" style="color: green;">6:30 - 7:30</th>
+//                     <td>${pr.accessPointName} - ${pr.resources}</td>
+//                     <td>Trade</td>
+//                     <th rowspan="2">${pr.scheduledDuration}</th>
+//                 </tr>
+//                 <tr>
+//                     <th>${pr.contactName}</th>
+//                     <th>Destination</th>
+//                 </tr>
 
                 
                 
           
         
-    `;
-    }
+//     `;
+//     }
+    
+//     placeholder.innerHTML = out;
+//     // console.log(placeholder)
+//   });
 
-    placeholder.innerHTML = out;
-    // console.log(out);
-    // console.log(placeholder);
-  });
+
+  
+  // fetch("http://127.0.0.1:5501/table.json")
+  // .then(function (response) {
+  //   return response.json();
+  // })
+
+  // .then(function (datatable) {
+  //   let placeholder = document.querySelector("#full");
+  //   let out = "";
+  //   for (let pr of datatable.results) {
+      
+  //     out += `
+    
+  //               <p>${pr.date}</p>
+                
+  //   `;
+  //   }
+    
+  //   placeholder.innerHTML = out;
+  //   // console.log(placeholder)
+  // });
+
+
+
 
 // fetch("http://127.0.0.1:5501/table.json")
 // .then(function(response){
@@ -242,7 +250,7 @@ fetch("http://127.0.0.1:5501/table.json")
     // }
     // console.log(datatable.results[i])
     // console.log(out)
-    console.log(resultProductData);
+    // console.log(resultProductData);
     placeholder.innerHTML = out;
   });
 
@@ -373,3 +381,112 @@ fetch("http://127.0.0.1:5501/table.json")
     // console.log(resultProductData);
     placeholder.innerHTML = out;
   });
+
+
+
+
+  // fetch("http://127.0.0.1:5501/table.json")
+  // .then(function (response) {
+  //   return response.json();
+  // })
+
+  // .then(function (datatable) {
+  //   // console.log(datatable)
+  //   // console.log(datatable.results)
+  //   let placeholder = document.getElementById("date").innerHTML;
+  //   let pr = document.querySelector("#date");
+    
+  //   // console.log(placeholder)
+  //   // console.log(pr)
+  //   var startDate = "2021-11-14T00:00:00";
+  //   var endDate = "2021-11-21T00:00:00";
+    
+    
+  //   out = "";
+  //   for(i of datatable.results){
+  //     // console.log(i);
+  //     out += `
+  //       <p>${i.date} - ${i.date}</p>
+  //     `;
+  //   }
+  //   // console.log(resultProductData);
+    
+  //   pr.innerHTML = out;
+  //   placeholder.innerHTML = out;
+  // });
+
+
+fetch("http://127.0.0.1:5501/table.json")
+.then(function (response) {
+  return response.json();
+})
+.then(function (datatable) {
+  let placeholder = document.querySelector("#tb");
+  let out = ""
+  for (let pr of datatable.results) {
+    
+    function time_convert(d)
+  { 
+    var a = Math.floor(d/3600);
+    var x = d%3600;
+    var b = Math.floor(x/60); 
+    if(a > 0){ 
+      // console.log(a)
+      if(b <= 0){
+        // console.log(b)
+        return a + "hr" 
+      } 
+      return a + "hr" +  b + "min"
+    }
+    else{
+      return b + "min"
+    }
+  
+    
+  // return a + "hr" + b + "min";  
+ }
+
+    var e = time_convert(pr.scheduledDuration)
+    // console.log(e);
+    out += `
+  
+              
+              <tr>
+                  <th rowspan="2" style="color: green;">${pr.scheduledTimeIn} - ${pr.scheduledTimeOut}</th>
+                  <td>${pr.accessPointName} - ${pr.resources}</td>
+                  <td>Trade</td>
+                  <th rowspan="2">${e}</th>
+              </tr>
+              <tr>
+                  <th>${pr.contactName}</th>
+                  <th>Destination</th>
+              </tr>
+
+              
+              
+        
+      
+  `;
+  // const moment = require('moment');
+  // const m = moment(new Date(pr.scheduledTimeIn));
+  // m.format('h:mma'); 
+ console.log(typeof(pr.scheduledTimeIn));
+//  console.log(time_convert(1800));
+//  console.log(time_convert(5400));
+//  console.log(time_convert(3600));
+  }
+
+
+  
+  placeholder.innerHTML = out;
+  // console.log(time_convert)
+});
+
+
+
+
+  
+//  console.log(time_convert(450));
+//  console.log(time_convert(1441));
+
+
