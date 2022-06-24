@@ -1,3 +1,4 @@
+// import moment from 'moment';
 
 
 fetch("http://127.0.0.1:5501/table.json").then(function (response) {
@@ -445,14 +446,20 @@ fetch("http://127.0.0.1:5501/table.json")
     
   // return a + "hr" + b + "min";  
  }
-
+ const f = pr.scheduledTimeIn
+ const g = pr.scheduledTimeOut
+  const n = moment(f);
+  k = n.format('LT');
+  console.log(k);
+  const m = moment(g);
+  p = m.format("LT");
     var e = time_convert(pr.scheduledDuration)
     // console.log(e);
     out += `
   
               
               <tr>
-                  <th rowspan="2" style="color: green;">${pr.scheduledTimeIn} - ${pr.scheduledTimeOut}</th>
+                  <th rowspan="2" style="color: green;">${k} - ${p}</th>
                   <td>${pr.accessPointName} - ${pr.resources}</td>
                   <td>Trade</td>
                   <th rowspan="2">${e}</th>
@@ -470,7 +477,7 @@ fetch("http://127.0.0.1:5501/table.json")
   // const moment = require('moment');
   // const m = moment(new Date(pr.scheduledTimeIn));
   // m.format('h:mma'); 
- console.log(typeof(pr.scheduledTimeIn));
+//  console.log(typeof(pr.scheduledTimeIn));
 //  console.log(time_convert(1800));
 //  console.log(time_convert(5400));
 //  console.log(time_convert(3600));
@@ -490,3 +497,8 @@ fetch("http://127.0.0.1:5501/table.json")
 //  console.log(time_convert(1441));
 
 
+
+
+
+const n = moment("2021-11-15T08:30:00");
+console.log(n.format('LT'));
