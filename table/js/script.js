@@ -386,35 +386,44 @@ fetch("http://127.0.0.1:5501/table.json")
 
 
 
-  // fetch("http://127.0.0.1:5501/table.json")
-  // .then(function (response) {
-  //   return response.json();
-  // })
+  fetch("http://127.0.0.1:5501/table.json")
+  .then(function (response) {
+    return response.json();
+  })
 
-  // .then(function (datatable) {
-  //   // console.log(datatable)
-  //   // console.log(datatable.results)
-  //   let placeholder = document.getElementById("date").innerHTML;
-  //   let pr = document.querySelector("#date");
+  .then(function (datatable) {
+    // console.log(datatable)
+    // console.log(datatable.results)
+    let placeholder = document.getElementById("date").innerHTML;
+    let pr = document.querySelector("#date");
     
-  //   // console.log(placeholder)
-  //   // console.log(pr)
-  //   var startDate = "2021-11-14T00:00:00";
-  //   var endDate = "2021-11-21T00:00:00";
+    // console.log(placeholder)
+    // console.log(pr)
+    var startDate = "2021-11-14T00:00:00";
+    var endDate = "2021-11-21T00:00:00";
     
-    
-  //   out = "";
-  //   for(i of datatable.results){
-  //     // console.log(i);
-  //     out += `
-  //       <p>${i.date} - ${i.date}</p>
-  //     `;
-  //   }
-  //   // console.log(resultProductData);
-    
-  //   pr.innerHTML = out;
-  //   placeholder.innerHTML = out;
-  // });
+    function byDate (a,b){
+      return new Date(a.date).valueOf()-new Date(b.date).valueOf();
+    }
+    const sortedData = datatable.results.sort(byDate)
+    const dateLimit=moment(sortedData[0].date).format('D/MM/YY')+" - "+(moment(sortedData[sortedData.length-1].date).format('D/MM/YY') )
+    console.log(dateLimit);
+    // console.log(datatable.results.sort(byDate));
+    // const dates = datatable.results.map((item)=>item.date.getDate())
+    // console.log(dates);
+    // const sortedArray  =dates.sort((a,b) => new Moment(a.date).format('D/MM/YY') - new Moment(b.date).format('YYYYMMDD'))
+    // console.log(sortedArray);
+    // for(i of datatable.results){
+    //   console.log(typeof(i.date));
+    //   out += `
+    //     <p>${i.date} - ${i.date}</p>
+    //   `;
+    // }
+    // console.log(resultProductData);
+    out = dateLimit;
+    pr.innerHTML = out;
+    placeholder.innerHTML = out;
+  });
 
 
 fetch("http://127.0.0.1:5501/table.json")
@@ -450,7 +459,7 @@ fetch("http://127.0.0.1:5501/table.json")
  const g = pr.scheduledTimeOut
   const n = moment(f);
   k = n.format('LT');
-  console.log(k);
+  // console.log(k);
   const m = moment(g);
   p = m.format("LT");
     var e = time_convert(pr.scheduledDuration)
@@ -501,4 +510,4 @@ fetch("http://127.0.0.1:5501/table.json")
 
 
 const n = moment("2021-11-15T08:30:00");
-console.log(n.format('LT'));
+// console.log(n.format('LT'));
