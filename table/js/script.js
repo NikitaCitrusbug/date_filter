@@ -76,6 +76,7 @@ fetch("http://127.0.0.1:5501/table.json").then(function (response) {
         var output = [];
         for (var i=0; i < input.length ; ++i)
             output.push(input[i][field]);
+            // console.log(output)
         return output;
     }
     var result = getFields(resultProductData, "date");
@@ -84,7 +85,7 @@ fetch("http://127.0.0.1:5501/table.json").then(function (response) {
     // console.log(typeof(result));
     for(i of result){
       // console.log(i);  
-      // const n = moment(i);
+      const n = moment(i);
       // console.log(n);
       const nm = n.format('dddd DD MMMM');
       // console.log(nm);
